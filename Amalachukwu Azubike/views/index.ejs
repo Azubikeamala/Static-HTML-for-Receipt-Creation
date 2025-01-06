@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Online Store</title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/" class="active">Order</a></li> <!-- 'Active' class -->
+        <li><a href="/login">Admin Login</a></li>
+        <li><a href="#">Contact Me</a></li>
+    </ul>
+</nav>
+
+<div class="main">
+    <h1>Phone Online Store</h1>
+
+    <!-- User Information and Product Selection -->
+    <form action="/purchase" method="POST">
+        <% const form = typeof errors !== 'undefined' ? errors : {}; %>
+        <h2>Select Products</h2>
+        <div class="product-grid">
+            <% products.forEach(product => { %>
+                <div class="product-card">
+                    <label>
+                        <input type="checkbox" name="selectedProducts" value="<%= product.id %>"> 
+                        <h2><%= product.name %> - $<%= product.price.toFixed(2) %></h2>
+                        <img src="<%= product.image %>" alt="<%= product.name %>" style="width:200px; height:auto;">
+                        <label for="quantity_<%= product.id %>">Quantity:</label>
+                        <input type="text" name="quantity_<%= product.id %>" id="quantity_<%= product.id %>" value="1" style="width:50px;">
+                    </label>
+                </div>
+            <% }) %>
+        </div>
+
+        <!-- Feilds for user Information  -->
+        <h2>User Information</h2>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= name %>">
+
+        <% if (form.name) { %>
+            <small class="error"><%= form.name %></small><br>
+        <% } %>
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<%= email %>">
+        <% if (form.email) { %>
+            <small class="error"><%= form.email %></small><br>
+        <% } %>
+        <br>
+
+        <label for="address">Address:</label>
+        <input type="text" name="address" value="<%= address %>">
+        <% if (form.address) { %>
+            <small class="error"><%= form.address %></small><br>
+        <% } %>
+        <br>
+        <label for="city">City:</label>
+        <input type="text" name="city" value="<%= city %>">
+        <% if (form.city) { %>
+            <small class="error"><%= form.city %></small><br>
+        <% } %>
+        <br>
+        <label for="province">Province:</label>
+        <select name="province">
+            <option value="">Select...</option>
+            <option value="Alberta" <%= province === 'Alberta' ? 'selected' : '' %>>Alberta</option>
+            <option value="British Columbia" <%= province === 'British Columbia' ? 'selected' : '' %>>British Columbia</option>
+            <option value="Manitoba" <%= province === 'Manitoba' ? 'selected' : '' %>>Manitoba</option>
+            <option value="New Brunswick" <%= province === 'New Brunswick' ? 'selected' : '' %>>New Brunswick</option>
+            <option value="Newfoundland and Labrador" <%= province === 'Newfoundland and Labrador' ? 'selected' : '' %>>Newfoundland and Labrador</option>
+            <option value="Northwest Territories" <%= province === 'Northwest Territories' ? 'selected' : '' %>>Northwest Territories</option>
+            <option value="Nova Scotia" <%= province === 'Nova Scotia' ? 'selected' : '' %>>Nova Scotia</option>
+            <option value="Nunavut" <%= province === 'Nunavut' ? 'selected' : '' %>>Nunavut</option>
+            <option value="Ontario" <%= province === 'Ontario' ? 'selected' : '' %>>Ontario</option>
+            <option value="Prince Edward Island" <%= province === 'Prince Edward Island' ? 'selected' : '' %>>Prince Edward Island</option>
+            <option value="Quebec" <%= province === 'Quebec' ? 'selected' : '' %>>Quebec</option>
+            <option value="Saskatchewan" <%= province === 'Saskatchewan' ? 'selected' : '' %>>Saskatchewan</option>
+            <option value="Yukon" <%= province === 'Yukon' ? 'selected' : '' %>>Yukon</option>
+        </select>
+        <% if (form.province) { %>
+            <small class="error"><%= form.province %></small><br>
+        <% } %>
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" value="<%= phone %>">
+        <% if (form.phone) { %>
+            <small class="error"><%= form.phone %></small><br>
+        <% } %>
+        <br>
+
+        <label for="delivery">Delivery Time</label>
+        <select name="delivery">
+            <option value="">Select...</option>
+            <option value="Morning" <%= delivery === 'Morning' ? 'selected' : '' %>>Morning</option>
+            <option value="Afternoon" <%= delivery === 'Afternoon' ? 'selected' : '' %>>Afternoon</option>
+            <option value="Evening" <%= delivery === 'Evening' ? 'selected' : '' %>>Evening</option>
+        </select>
+        <% if (form.delivery) { %>
+            <small class="error"><%= form.delivery %></small><br>
+        <% } %>
+        <br>
+
+        <!-- Single submit button -->
+        <button type="submit" class="button">Purchase</button>
+    </form>
+
+    <!-- For error Messages -->
+    <% if (errors && errors.length > 0) { %>
+        <div style="color:red;">
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error %></li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } %>
+</div>
+</body>
+</html>

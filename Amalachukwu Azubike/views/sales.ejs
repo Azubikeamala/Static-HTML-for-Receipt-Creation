@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Records</title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="/" >Order</a></li> 
+        <li><a href="/login">Admin Login</a></li>
+        <li><a href="#">Contact Me</a></li>
+    </ul>
+</nav>
+
+    <h1>Sales Records</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Province</th>
+                <th>Phone</th>
+                <th>Delivery Time</th>
+                <th>Total Amount</th>
+                <th>Sales Tax</th>
+                <th>Final Amount</th>
+                <th>Date</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <% sales.forEach(sale => { %>
+                <tr>
+                    <td><%= sale.name %></td>
+                    <td><%= sale.email %></td>
+                    <td><%= sale.address %></td>
+                    <td><%= sale.city %></td>
+                    <td><%= sale.province %></td>
+                    <td><%= sale.phone %></td>
+                    <td><%= sale.delivery %></td>
+                    <td><%= sale.totalAmount.toFixed(2) %></td>
+                    <td><%= sale.salesTax.toFixed(2) %></td>
+                    <td><%= sale.finalAmount.toFixed(2) %></td>
+                    <td><%= sale.createdAt ? sale.createdAt.toLocaleDateString() : '' %></td> 
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

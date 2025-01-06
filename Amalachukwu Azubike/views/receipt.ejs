@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <link rel="stylesheet" href="/receipt.css"> 
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="/" >Order</a></li> 
+        <li><a href="/login">Admin Login</a></li>
+        <li><a href="#">Contact Me</a></li>
+    </ul>
+</nav>
+
+    <div class="main">
+        <h1>My Shop's Invoice</h1>
+        <p><strong>Name:</strong> <%= name %></p>
+        <p><strong>Email:</strong> <%= email %></p>
+        <p><strong>Address:</strong> <%= address %></p>
+        <p><strong>City:</strong> <%= city %></p>
+        <p><strong>Province:</strong> <%= province %></p>
+        <p><strong>Phone:</strong> <%= phone %></p>
+        <p><strong>Delivery Time:</strong> <%= delivery %></p>
+        
+        
+        <h3>Products Purchased:</h3>
+        <ul>
+            <% selectedProducts.forEach(product => { %>
+                <li>
+                    <%= product.name %> - 
+                    Quantity: <%= product.quantity %> - 
+                    Total: $<%= product.total.toFixed(2) %>
+                </li>
+            <% }) %>
+        </ul>
+        
+        <p><strong>Total Before Tax:</strong> $<%= totalAmount.toFixed(2) %></p>
+        <p><strong>Sales Tax:</strong> $<%= salesTax.toFixed(2) %></p>
+        <p><strong>Total Amount:</strong> $<%= finalAmount.toFixed(2) %></p>
+        
+        <a href="/">Back to Phone Store</a>
+    </div>
+</body>
+</html>

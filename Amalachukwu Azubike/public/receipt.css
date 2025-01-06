@@ -1,0 +1,101 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #222222;
+    margin: 0;
+    padding: 20px;
+
+}
+
+/*.main {
+    margin: auto;
+    background-color: red;
+    padding: ;
+}*/
+
+.main {
+    max-width: 600px; 
+    margin: 0 auto; 
+    justify-content: center;
+    padding: 20px;
+    background: white;
+    border: 1px solid #cdcbcb;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #1c1c1c;
+    margin-bottom: 20px;
+}
+
+/* Section */
+h2 {
+    font-size: 1.5em;
+    color: #353535;
+    margin-top: 20px;
+}
+
+/* Receipt content */
+.receipt-details {
+    margin-bottom: 20px;
+}
+
+.receipt-details p {
+    margin: 5px 0; 
+}
+
+
+
+
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .receipt-container {
+        padding: 15px; 
+    }
+    
+    h1, h2 {
+        font-size: 1.2em;
+    }
+    
+    .totals {
+        flex-direction: column; 
+    }
+}
+
+/*Nav Bar CSS*/
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+nav ul li a.active {
+    background-color: #575757;
+    color: white;             
+    font-weight: bold;         
+}
